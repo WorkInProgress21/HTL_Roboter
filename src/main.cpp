@@ -1,18 +1,18 @@
 #include <Arduino.h>
+#include <Ps3Controller.h>
 
 // put function declarations here:
-int myFunction(int, int);
+void onConnect();
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Ps3.begin("A0:5A:5F:33:3B:10");
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
 }
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+void onConnect(){
+  printf("Controller connected succesfully\n");
 }
+
