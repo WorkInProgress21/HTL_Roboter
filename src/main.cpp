@@ -15,6 +15,9 @@
 // put function declarations here:
 void onConnect();
 void getInput();
+void balanceMotors(float* adjust);
+
+float motorBalance=0.f;
 
 void setup() {
   Serial.begin(9600);
@@ -75,4 +78,18 @@ void getInput(){
   digitalWrite(MOTOR2RICHTUNG,LOW);
   digitalWrite(MOTOR2SPEED,TURNSPEED);
   }
+}
+
+void balanceMotors(float* adjust){
+  static float counterRight;
+  static float counterLeft;
+
+  if (digitalRead()==HIGH){
+    counterLeft++;
+  }
+  if (digitalRead()==HIGH){
+    counterRight++;
+  }
+
+  *adjust = counterLeft/counterRight;
 }
